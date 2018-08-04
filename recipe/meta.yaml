@@ -1,40 +1,40 @@
-{% set name = "postgres-xl" %}
 {% set version = "9.5r1.6" %}
-{% set sha256 = "0dab9c2b6c749161ce56ccdef8e7bfc80c607a30c55e0089ec50c7d05af5fa97" %}
 
 package:
-  name: {{ name|lower }}
+  name: postgres-xl
   version: {{ version }}
 
 source:
-  url: https://www.postgres-xl.org/downloads/{{name}}-{{version}}.tar.bz2
-  sha256: {{ sha256 }}
+  url: https://www.postgres-xl.org/downloads/postgres-xl-{{ version }}.tar.bz2
+  sha256: 0dab9c2b6c749161ce56ccdef8e7bfc80c607a30c55e0089ec50c7d05af5fa97
   patches:
     - 00-disable-failed-contrib.patch
 
 build:
   skip: True  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - bison
     - flex
-    - openssl 1.0.*
-    - readline 7.0  # [not win]
-    - zlib 1.2.11
+    - openssl
+    - readline  # [not win]
+    - zlib
     - krb5  # [not osx]
-    - libxml2 2.9.*
+    - libxml2
     - libxslt 1.1.*
-    - libuuid 1.0.*  # [not win]
+    - libuuid  # [not win]
   run:
-    - openssl 1.0.*
-    - readline 7.0  # [not win]
-    - zlib 1.2.11
+    - openssl
+    - readline  # [not win]
+    - zlib
     - krb5  # [not osx]
-    - libxml2 2.9.*
+    - libxml2
     - libxslt 1.1.*
-    - libuuid 1.0.*  # [not win]
+    - libuuid  # [not win]
 
 test:
   commands:
@@ -46,8 +46,6 @@ test:
     - gtm --help
     - gtm_ctl --help
     - gtm_proxy --help
-    - conda inspect linkages $PKG_NAME  # [not win]
-    - conda inspect objects $PKG_NAME  # [osx]
 
 about:
   home: https://www.postgres-xl.org/
