@@ -14,27 +14,27 @@ source:
 
 build:
   skip: True  # [win]
-  number: 1
+  number: 2
 
 requirements:
   build:
     - bison
     - flex
-    - openssl 1.0.*
-    - readline 7.0  # [not win]
-    - zlib 1.2.11
+    - openssl
+    - readline  # [not win]
+    - zlib
     - krb5  # [not osx]
-    - libxml2 2.9.*
-    - libxslt 1.1.*
-    - libuuid 1.0.*  # [not win]
+    - libxml2
+    - libxslt
+    - libuuid  # [not win]
   run:
-    - openssl 1.0.*
-    - readline 7.0  # [not win]
-    - zlib 1.2.11
+    - openssl
+    - readline  # [not win]
+    - zlib
     - krb5  # [not osx]
-    - libxml2 2.9.*
-    - libxslt 1.1.*
-    - libuuid 1.0.*  # [not win]
+    - libxml2
+    - libxslt
+    - libuuid  # [not win]
 
 test:
   commands:
