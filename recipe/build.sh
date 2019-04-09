@@ -1,12 +1,10 @@
 #!/bin/bash
 
-LDFLAGS="-rpath $PREFIX/lib $LDFLAGS"
-
 ./configure \
-    --prefix=$PREFIX \
+    --prefix=${PREFIX} \
     --with-readline \
-    --with-libraries=$PREFIX/lib \
-    --with-includes=$PREFIX/include \
+    --with-libraries=${PREFIX}/lib \
+    --with-includes=${PREFIX}/include \
     --with-openssl \
     --without-python \
     --with-uuid=e2fs \
@@ -14,8 +12,8 @@ LDFLAGS="-rpath $PREFIX/lib $LDFLAGS"
     --with-libxslt \
     --with-gssapi
 
-make -j $CPU_COUNT
-make -j $CPU_COUNT -C contrib
+make -j ${CPU_COUNT}
+make -j ${CPU_COUNT} -C contrib
 
 make check
 make check -C contrib
