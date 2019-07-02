@@ -11,7 +11,7 @@ source:
     - 00-disable-failed-contrib.patch
 
 build:
-  skip: True  # [win]
+  skip: True  # [win or osx]
   number: 3
 
 requirements:
