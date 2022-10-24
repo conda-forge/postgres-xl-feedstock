@@ -17,17 +17,10 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - make
   host:
     - bison
     - flex
-    - openssl
-    - readline  # [not win]
-    - zlib
-    - krb5  # [not osx]
-    - libxml2
-    - libxslt
-    - libuuid  # [not win]
-  run:
     - openssl
     - readline  # [not win]
     - zlib
